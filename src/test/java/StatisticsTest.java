@@ -39,4 +39,10 @@ public class StatisticsTest {
         int expected = 3;
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void ShouldNamesPlayers () {
+        String[] nameSpeed = {"Ivan 5", "Anna 7", "Masha 2", "Alina 3", "Andrew 1", "Kolya 0"};
+        String[] actual = Statistics.listName(nameSpeed);
+        String[] expected = { "Masha", "Alina", "Andrew", "Kolya"};
+    }
 }
