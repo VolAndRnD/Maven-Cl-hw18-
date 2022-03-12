@@ -1,12 +1,12 @@
 public class Statistics {
-
+    static boolean isGreenLight = false;
     static int maxSpeed = 3;
 
     public static int alldroppedOut( int[] speedOfPlayer) { // количество выбывающих
         int sumDroppedOut = 0;
 
         for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
+            if (isGreenLight) {
                 sumDroppedOut += 0;
             } else {
                 if (speed > maxSpeed) {
@@ -23,7 +23,7 @@ public class Statistics {
     public static int[] droppedOut( int[] speedOfPlayer) {
         int cnt = 0;
         for (int speed : speedOfPlayer) { // счетчик размера массива
-            if (Main.greenLight()) {
+            if (isGreenLight) {
             } else {
                 if (speed > maxSpeed) {
                     cnt++;
@@ -34,7 +34,7 @@ public class Statistics {
         int[] ans = new int[cnt];
         int i = 0;
         for (int speed : speedOfPlayer) { //массив выбывающих
-            if (Main.greenLight()) {
+            if (isGreenLight) {
             } else {
                 if (speed > maxSpeed) {
                     ans[i] = speed;
@@ -48,7 +48,7 @@ public class Statistics {
     public static int[] remain( int[] speedOfPlayer) {
         int cnt = 0;
         for (int speed : speedOfPlayer) { // счетчик для массива
-            if (Main.greenLight()) {
+            if (isGreenLight) {
                 cnt++;
             } else {
                 if (speed <= maxSpeed) {
@@ -60,7 +60,7 @@ public class Statistics {
         int[] ans1 = new int[cnt];
         int ii = 0;
         for (int speed : speedOfPlayer) { //массив выживших
-            if (Main.greenLight()) {
+            if (isGreenLight) {
                 ans1[ii]=speed;
                 ii++;
             } else {
