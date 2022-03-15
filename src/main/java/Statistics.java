@@ -2,29 +2,44 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Statistics {
+    static boolean isGreenLight = false;
+    static int maxSpeed = 3;
 
-    public static int[] potentiallyDroppedOut(int[] speedOfPlayer) {
-        int sum = 0;
-        int cnt = 0;
+    public static int alldroppedOut( int[] speedOfPlayer) { // количество выбывающих
+        int sumDroppedOut = 0;
 
         for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
-                sum += 0;
+            if (isGreenLight) {
+                sumDroppedOut += 0;
             } else {
-                if (speed > 0) {
-                    System.out.println("Было замечено движение игрока со скоростью " + speed);
+                if (speed > maxSpeed) {
+                    sumDroppedOut++;
+
+
+                }
+            }
+        }
+        return sumDroppedOut;
+    }
+
+
+    public static int[] droppedOut( int[] speedOfPlayer) {
+        int cnt = 0;
+        for (int speed : speedOfPlayer) { // счетчик размера массива
+            if (isGreenLight) {
+            } else {
+                if (speed > maxSpeed) {
                     cnt++;
                 }
             }
         }
-        int[] ans = new int[cnt];
 
+        int[] ans = new int[cnt];
         int i = 0;
-        for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
-                sum += 0;
+        for (int speed : speedOfPlayer) { //массив выбывающих
+            if (isGreenLight) {
             } else {
-                if (speed > 0) {
+                if (speed > maxSpeed) {
                     ans[i] = speed;
                     i++;
                 }
@@ -33,93 +48,34 @@ public class Statistics {
         return ans;
     }
 
-    public static int[] guaranteedRemain(int[] speedOfPlayer) {
-        int sum = 0;
+    public static int[] remain( int[] speedOfPlayer) {
         int cnt = 0;
-
-        for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
-                sum += 0;
-                System.out.println("Остаются игроки, чья скорость " + speed);
+        for (int speed : speedOfPlayer) { // счетчик для массива
+            if (isGreenLight) {
+                cnt++;
             } else {
-                if (speed < 1) {
-                    System.out.println("Есть игроки со скоростью " + speed);
+                if (speed <= maxSpeed) {
                     cnt++;
                 }
             }
         }
+
         int[] ans1 = new int[cnt];
-        int i = 0;
-        for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
-                sum += 0;
+        int ii = 0;
+        for (int speed : speedOfPlayer) { //массив выживших
+            if (isGreenLight) {
+                ans1[ii]=speed;
+                ii++;
             } else {
-                if (speed < 1) {
-                    ans1[i] = speed;
-                    i++;
+                if (speed <= maxSpeed) {
+                    ans1[ii] = speed;
+                    ii++;
                 }
             }
         }
         return ans1;
     }
 
-    public static int[] MAX_SPEED(int[] speedOfPlayer) {
-        int max_speed = Main.optionsMaxSpeed();
-        int sum = 0;
-        int cnt = 0;
-        for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
-                sum += 0;
-            } else {
-                if (speed > max_speed) {
-                    cnt++;
-                }
-            }
-        }
-        int[] ans2 = new int[cnt];
-        int i = 0;
-        for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
-                sum += 0;
-            } else {
-                if (speed > max_speed) {
-                    ans2[i] = speed;
-                    i++;
-                }
-            }
-        }
-        return ans2;
-    }
-
-    public static int notMaxSpeed(int[] speedOfPlayer) {
-        int max_speed = Main.optionsMaxSpeed();
-        int sum = 0;
-        int cnt1 = 0;
-        for (int speed : speedOfPlayer) {
-            if (Main.greenLight()) {
-                sum += 0;
-            } else {
-                if (speed > max_speed) {
-                    System.out.println("Выбывает игрок, чья скорость " + speed);
-                    cnt1++;
-                }
-            }
-        }
-        return cnt1;
-
-    }
-
-    public static int alldroppedOut(int[] speedOfPlayer) {
-        int sumDroppedOut = 0;
-        if (Main.greenLight()) {
-            sumDroppedOut += 0;
-            System.out.println("Выбывает всего игроков " + sumDroppedOut);
-        } else {
-            sumDroppedOut = notMaxSpeed(speedOfPlayer);
-            System.out.println("Выбывает всего игроков " + sumDroppedOut);
-        }
-        return sumDroppedOut;
-    }
 
     public static String[] listName(String[] nameSpeed) {
         int size = 0;
@@ -138,7 +94,7 @@ public class Statistics {
             ii = ii + 1;
         }
 
-        int max_speed = Main.optionsMaxSpeed();
+
         int cnt2 = -1;
         int cnt3 = -1;
 
@@ -146,12 +102,12 @@ public class Statistics {
         int[] live = new int[size];
         for (String parts : numbers) { // числовой массив выживших
             int funny = Integer.parseInt(parts);
-            if (Main.greenLight()) {
+            if (isGreenLight) {
                 cnt2++;
                 live[cnt2] = funny;
             } else {
                 cnt3++;
-                if (funny <= max_speed) {
+                if (funny <= maxSpeed) {
                     live[cnt3] = funny;
 
                 }
@@ -190,7 +146,6 @@ public class Statistics {
                 cnt6++;
             }
         }
-        System.out.println (Arrays.toString (listName));
         return listName;
     }
 }
