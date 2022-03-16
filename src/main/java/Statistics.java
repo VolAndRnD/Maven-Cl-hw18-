@@ -84,64 +84,38 @@ class Statistics {
 
     public String[] listName(String[] nameSpeed) {
 
-        int a = 0;
-        int cnt = -1;
+        int cnt = 0;
         int cnt2 = 0;
-        for (String part : nameSpeed) {
-            a++;}
-
-        String[] names = new String[a];
-        String[] positions = new String[a];
-        int [] live = new int[a];
-
-
 
         for (String part : nameSpeed) {
             String[] list = part.split(" ");
-            positions[cnt2] = list[1]; // массив для сверки позиций
-            cnt2++;
             int speed = Integer.parseInt(list[1]);
-            cnt++;
             if (isGreenLight) {
-                live[cnt] = speed;
-
+                cnt++;
             } else {
                 if (speed <= maxSpeed) {
-                    live[cnt] = speed;// интовой массив выжыивших
+                    cnt++;
                 }
             }
         }
 
-        int cnt3=0;
-
-        for (String part : nameSpeed) { // массив имен
+        String[] listName = new String[cnt];
+        for (String part : nameSpeed) {
             String[] list = part.split(" ");
             String name = list[0];
-            names [cnt3] = name;
-            cnt3++;}
+            int speed = Integer.parseInt(list[1]);
+            if (isGreenLight) {
+                listName[cnt2] = name;
+                cnt2++;
 
-        int cnt4 = 0;// строковый массив выживших
-        String[] remain = new String[a];
-        for (int happy : live) {
-            String part1 = Integer.toString(happy);
-            remain[cnt4] = part1;
-            cnt4++;
-        }
-        int cnt5 = 0;
-        int cnt6 = 0;
-        for (int i2 = 0; i2 < live.length; i2++) { //счетчик для сверки массивов
-            if (positions[i2].equals(remain[i2])) {
-                cnt5++;
-
+            } else {
+                if (speed <= maxSpeed) {
+                    listName[cnt2] = name;
+                    cnt2++;
+                }
             }
         }
-        String[] listName = new String[cnt5]; // сравненние строк массивов скоростей, для заполнения массива имен выживших
-        for (int i3 = 0; i3 < live.length; i3++) {
-            if (positions[i3].equals(remain[i3])) {
-                listName[cnt6] = names[i3];
-                cnt6++;
-            }
-        }
+
         return listName;
     }
 }
