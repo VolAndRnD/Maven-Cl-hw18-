@@ -1,20 +1,8 @@
-import java.util.Arrays;
-
 class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
+        GameManager gM = new GameManager( false,4);
 
-        int[] speedOfPlayer = {5, 0, 2};
-
-        Statistics.isGreenLight = false;
-        System.out.println (" Количество выбывших: " + Statistics.alldroppedOut(speedOfPlayer));
-        System.out.println( " Выбывшие: " + Arrays.toString(Statistics.droppedOut(speedOfPlayer)));
-        System.out.println( " Выжившие: " + Arrays.toString(Statistics.remain(speedOfPlayer)));
-
-        Statistics.isGreenLight = true;
-        System.out.println (" Количество выбывших: " + Statistics.alldroppedOut(speedOfPlayer));
-        System.out.println( " Выбывшие: " + Arrays.toString(Statistics.droppedOut(speedOfPlayer)));
-        System.out.println( " Выжившие: " + Arrays.toString(Statistics.remain(speedOfPlayer)));
-
+    System.out.println("До какого раунда доживет игрок? - " + gM.isFailed(2));
+    System.out.println("До какого раунда доживет игрок? - " + gM.round(new int[]{1, 2, 4,1,5})) ;
     }
 }
-
