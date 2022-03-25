@@ -1,15 +1,15 @@
 class GameManager extends SpeedyGame {
-    public int maxSpeed;
-    public boolean isGreenLight;
+    protected int maxSpeed;
+    public Game game;
 
-    public GameManager(boolean isGreenLight, int maxSpeed) {
-        super(isGreenLight, maxSpeed);
+    public GameManager(Game game, int maxSpeed) {
+        super(game.isGreenLight, maxSpeed);
         this.maxSpeed = maxSpeed;
-        this.isGreenLight = isGreenLight;
+        this.game = game;
     }
 
 
-    public int round(int[]player) {
+    public int round(int[] player) {
 
 
         int cnt = 0;
