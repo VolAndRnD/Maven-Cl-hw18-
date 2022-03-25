@@ -1,20 +1,13 @@
-import java.util.Arrays;
-
 class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
+        GameManager gM = new GameManager( new Game(false),6);
 
-        int[] speedOfPlayer = {5, 0, 2};
+        Movable p1 = new ConstantPlayer( 5);
+        Movable p2 = new FastPlayer( 1, 2);
 
-        Statistics.isGreenLight = false;
-        System.out.println (" Количество выбывших: " + Statistics.alldroppedOut(speedOfPlayer));
-        System.out.println( " Выбывшие: " + Arrays.toString(Statistics.droppedOut(speedOfPlayer)));
-        System.out.println( " Выжившие: " + Arrays.toString(Statistics.remain(speedOfPlayer)));
-
-        Statistics.isGreenLight = true;
-        System.out.println (" Количество выбывших: " + Statistics.alldroppedOut(speedOfPlayer));
-        System.out.println( " Выбывшие: " + Arrays.toString(Statistics.droppedOut(speedOfPlayer)));
-        System.out.println( " Выжившие: " + Arrays.toString(Statistics.remain(speedOfPlayer)));
+        System.out.println( gM.loser(p1,p2,1));
+        System.out.println( gM.loser(p1,p2,2));
+        System.out.println( gM.loser(p1,p2,3));
 
     }
 }
-
