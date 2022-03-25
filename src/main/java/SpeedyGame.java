@@ -8,12 +8,10 @@ class SpeedyGame extends Game {
     }
 
     public void setMaxSpeed(int maxSpeed) {
-
         this.maxSpeed = maxSpeed;
     }
 
     public int getMaxSpeed(int maxSpeed) {
-
         return maxSpeed;
     }
 }
