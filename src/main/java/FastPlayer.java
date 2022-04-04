@@ -9,7 +9,6 @@ public class FastPlayer implements Movable {
 
         this.startSpeed = startSpeed;
         this.speedStep =  speedStep;
-
     }
 
 

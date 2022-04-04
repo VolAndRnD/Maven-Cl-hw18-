@@ -1,19 +1,18 @@
-class GameManager extends SpeedyGame {
+ class GameManager  {
     protected SpeedyGame sG;
 
     public GameManager(SpeedyGame sG) {
-        super(sG.isGreenLight, sG.maxSpeed);
-        this.sG = sG;
+    this.sG = sG;
     }
 
 
     public int round(int[] player) {
         int cnt = 0;
         for (int speed : player) {
-            if (getLight()) {
+            if (sG.isGreenLight) {
                 cnt++;
             } else {
-                if (speed <= maxSpeed) {
+                if (speed <= sG.maxSpeed) {
                     cnt++;
                 }
             }
@@ -21,26 +20,7 @@ class GameManager extends SpeedyGame {
         return cnt;
     }
 
-    public int loser(Movable p1, Movable p2, int rounds) {
-        int loser = 0;
-        int i = 0;
-
-            if (sG.isFailed(p1.getSpeed()) == false && sG.isFailed(p2.getSpeed()) == false && rounds != 4) {
-                loser = 0;
-                }
-            else{
-            if (sG.isFailed(p1.getSpeed()) != false && sG.isFailed(p2.getSpeed()) == false && rounds != 4 ) {
-                loser = -1;
-                i++;}
-            if (sG.isFailed(p2.getSpeed()) != false && sG.isFailed(p1.getSpeed()) == false && rounds != 4 ) {
-                loser = 1;
-                i++;}
-            }
-
-
-    return loser;
-    }
-    public int loser1(Movable p1, Movable p2, int rounds) {
+       public int loser1(Movable p1, Movable p2, int rounds) {
         int loser = 0;
         int cnt1 = 0;
         int cnt2 = 0;
