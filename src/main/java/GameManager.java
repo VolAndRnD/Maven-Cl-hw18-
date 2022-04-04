@@ -1,21 +1,19 @@
-class GameManager extends SpeedyGame {
+class GameManager  {
     protected SpeedyGame sG;
 
     public GameManager(SpeedyGame sG) {
-        super(sG.isGreenLight, sG.maxSpeed);
-       this.sG = sG;
+        this.sG = sG;
     }
 
 
     public int round(int[] player) {
 
-
         int cnt = 0;
         for (int speed : player) {
-            if (getLight()) {
+            if (sG.isGreenLight) {
                 cnt++;
             } else {
-                if (speed <= maxSpeed) {
+                if (speed <= sG.maxSpeed) {
                     cnt++;
                 }
             }
