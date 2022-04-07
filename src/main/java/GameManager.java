@@ -10,8 +10,8 @@ class GameManager  {
 
         int cnt = 0;
         for (int speed : player) {
-            if (game.isFailed(speed)) {}
-            else {cnt++;}
+            if (!game.isFailed(speed)){cnt++;}
+
         }
         return cnt;
     }
