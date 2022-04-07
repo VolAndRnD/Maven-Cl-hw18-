@@ -1,8 +1,8 @@
 class GameManager  {
-    protected SpeedyGame sG;
+    protected Game game;
 
-    public GameManager(SpeedyGame sG) {
-        this.sG = sG;
+    public GameManager(Game game) {
+        this.game = game;
     }
 
 
@@ -10,12 +10,8 @@ class GameManager  {
 
         int cnt = 0;
         for (int speed : player) {
-            if (sG.isGreenLight) {
+            if (game.isFailed(speed)) {
                 cnt++;
-            } else {
-                if (speed <= sG.maxSpeed) {
-                    cnt++;
-                }
             }
         }
         return cnt;

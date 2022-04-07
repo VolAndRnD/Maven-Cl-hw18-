@@ -5,42 +5,42 @@ public class StatisticsTest {
     @Test
     public void ShouldDroppedOut() {
         GameManager gM = new GameManager( new SpeedyGame(false,3));
-        boolean actual =  gM.sG.isFailed(0);
+        boolean actual =  gM.game.isFailed(0);
         boolean expected = false;
         Assertions.assertEquals(expected,actual);
     }
     @Test
     public void ShouldDroppedOut1() {
         GameManager gM = new GameManager( new SpeedyGame(false,3));
-        boolean actual =  gM.sG.isFailed(2);
+        boolean actual =  gM.game.isFailed(2);
         boolean expected = false;
         Assertions.assertEquals(expected,actual);
     }
     @Test
     public void ShouldDroppedOut2() {
         GameManager gM = new GameManager( new SpeedyGame(true,3));
-        boolean actual =  gM.sG.isFailed(2);
+        boolean actual =  gM.game.isFailed(2);
         boolean expected = false;
         Assertions.assertEquals(expected,actual);
     }
     @Test
     public void ShouldDroppedOut3() {
         GameManager gM = new GameManager( new SpeedyGame(false,3));
-        boolean actual =  gM.sG.isFailed(3);
+        boolean actual =  gM.game.isFailed(3);
         boolean expected = false;
         Assertions.assertEquals(expected,actual);
     }
     @Test
     public void ShouldDroppedOut4() {
         GameManager gM = new GameManager( new SpeedyGame(false,3));
-        boolean actual =  gM.sG.isFailed(4);
+        boolean actual =  gM.game.isFailed(4);
         boolean expected = true;
         Assertions.assertEquals(expected,actual);
     }
     @Test
     public void ShouldDroppedOut5() {
         GameManager gM = new GameManager( new SpeedyGame(true,3));
-        boolean actual =  gM.sG.isFailed(4);
+        boolean actual =  gM.game.isFailed(4);
         boolean expected = false;
         Assertions.assertEquals(expected,actual);
     }
